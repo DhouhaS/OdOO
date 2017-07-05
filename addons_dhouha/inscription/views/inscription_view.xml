@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<odoo>
+<menuitem id="inscri_principale" name="Inscription"/>
+    
+<menuitem id="inscri_sous_menu" parent="inscri_principale" name="Inscription"/>
+
+
+
+    <record id="inscription_form" model="ir.ui.view">
+        <field name="name">inscription: form</field>
+        <field name="model">inscription.inscription</field>
+        <field name="arch" type="xml">
+        
+               <form>
+               
+                 <group>
+                 
+                    <group>
+                   <field name="name"/>
+                   <field name="prenom"/>
+                   <field name="date"/>
+                    </group>
+                    
+                    <group>
+                   
+                       <field name="genre"/>
+                       <field name="inscription_id"/>
+                       <field name="inscription_id3"  widget="many2many_tags"/>
+            
+                    </group>
+                  
+                 
+                  <notebook>
+                       <page string="Details">
+                         <group>
+                          <field name="ville"/>
+                          <field name="rue"/>
+                          <field name="gouv"/>
+                         </group>
+                      </page>
+                      <page string="Matieres">
+                           <group>
+                                 <field name="inscription_matiere_id" widget="one2many_list">
+                                    <tree editable="bottom">
+                                       <field name="name_matiere"/>
+                                       <field name="coef_matiere"/>
+                                    </tree>
+                                 </field>
+                            </group> 
+                       </page>
+                  
+                 
+                  </notebook>   
+                 </group>
+               </form>
+           </field>
+    </record>
+
+<record id="inscription_tree" model="ir.ui.view">
+        <field name="name"> inscreption:tree</field>
+        <field name="model">inscription.inscription</field>
+        <field name="arch" type="xml">
+            <tree>
+             <field name="name"/>
+            <field name= "bac"/>
+            </tree>
+        </field>
+    </record>
+
+<record id="inscription_action" model="ir.actions.act_window">
+<field name="name">Inscription</field>
+<field name="res_model">inscription.inscription</field>
+<field name="view_mode">tree,form</field>
+</record>
+
+<menuitem id="inscription_sous_sous_menu" parent="inscri_sous_menu" name="Inscription" action="inscription_action"/>             
+
+    
+</odoo>   
+   

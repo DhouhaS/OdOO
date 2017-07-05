@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<odoo>
+<menuitem id="formation_principale" name="Formation"/>
+    
+<menuitem id="formation_sous_menu" parent="formation_principale" name="Formation"/>
+
+
+
+<record id="formation_form" model="ir.ui.view">
+<field name="name">formation: form</field>
+<field name="model">formation.formation</field>
+<field name="arch" type="xml">
+
+   <form>
+   
+     <group>
+     
+        <group>
+       <field name="name"/>
+       <field name="age"/>
+       <field name="moyenne"/>
+        </group>
+        
+        <group>
+       <field name="booleen"/>
+       <field name="statut"/>
+       </group>
+       
+       <notebook>
+     <page string="autre information">
+     <group>
+         <field name="remarque"></field>
+    </group>
+     </page>
+     <page string="notebook"></page>
+     </notebook>
+     </group>
+     
+   </form>
+
+ </field>
+</record>
+
+<record id="formation_tree" model="ir.ui.view">
+    <field name="name"> formation: tree</field>
+    <field name="model">formation.formation</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="age"/>
+        </tree>
+      </field>
+</record>
+
+<record id="formation_action" model="ir.actions.act_window">
+<field name="name">formation</field>
+<field name="res_model">formation.formation</field>
+<field name="view_mode">tree,form</field>
+</record>
+<menuitem id="formation_sous_sous_menu" parent="formation_sous_menu" name="Formation" action="formation_action"/>
+
+<record id="view_formation_filter" model="ir.ui.view">
+            <field name="name">formation: filter</field>
+            <field name="model">formation.formation</field>
+            <field name="arch" type="xml">
+                <search string="Search formation">
+                    <filter name="statut" string="ouvrir" domain="[('statut','=','nouveau')]"/>
+                    <filter name="statut" string="confirmer" domain="[('statut','=','valider')]"/>
+               </search>
+            </field>
+</record>>
+                   
+                    
+
+        
+
+</odoo>

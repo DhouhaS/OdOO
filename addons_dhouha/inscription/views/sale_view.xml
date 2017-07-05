@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="targa_viw_sale_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          <data>
+              <field name="partner_id" position="after">
+                <field name="prenom"/>
+              </field>
+          </data>
+          <data>
+              <field name="partner_id" position="before">
+                <field name="nom_commande"/>
+              </field>
+          </data>
+         
+          <data>
+              <field name="amount_tax" position="after">
+                <field name="timbre_fiscal" readonly="1"/>
+              </field>
+          </data>
+        </field>
+    </record>
+
+ 
+                
+       
+
+
+</odoo>
